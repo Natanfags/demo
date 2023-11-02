@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -42,6 +41,9 @@ public class Pessoa {
     @JsonProperty("tipo_sanguineo")
     private String tipoSanguineo;
 
+    public double calcularIMC() {
+        return peso / (altura * altura);
+    }
 
     public int getIdade() {
         return Period.between(this.dataNasc, LocalDate.now()).getYears();
